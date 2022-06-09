@@ -1,14 +1,21 @@
 import gym
 
-from stable_baselines3 import PPO
+from stable_baselines3.ppo.ppo import PPO
 from stable_baselines3.common.env_util import make_vec_env
 
-model = PPO.load("ppo_cartpole")
-test_env = gym.make("CartPole-v1")
+env_name="LunarLanderContinuous-v2"
+test_env = gym.make(env_name)
 obs = test_env.reset()
+
+model = PPO.load(f"{env_name}-PPO/checkpoints/rl_model_5040000_steps.zip")
+#model = PPO.load(f"{env_name}-PPO/best_model.zip")
+
 done = False;
+total_reward = 0.0
 
 while not done:
-    action, _states = model.predict(obs)
+    action, _ = model.predict(obs)
     obs, reward, done, info = test_env.step(action)
+    total_reward += reward
     test_env.render()
+print(f"Reward is {total_reward}")

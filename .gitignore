@@ -1,3 +1,8 @@
+CarRacing-v1-PPO/
+LunarLanderContinuous-v2-PPO/
+LunarLander-v2-PPO/
+Taxi-v3-PPO/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
