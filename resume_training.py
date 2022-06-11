@@ -2,7 +2,7 @@ import gym
 import time
 import numpy as np
 from stable_baselines3.common.env_checker import check_env
-from stable_baselines3 import PPO
+from stable_baselines3.ppo.ppo import PPO
 from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv
 from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.utils import set_random_seed
@@ -21,8 +21,8 @@ log_dir = f"{run_dir}/log"
 checkpoint_dir = f"{run_dir}/checkpoints"
 bestmodel_file = f"{run_dir}/best_model.zip"
 
-checkpoint_prefix = f"{run_name}_";
-checkpoint_postfix = "_steps.zip";
+checkpoint_prefix = f"{run_name}_"
+checkpoint_postfix = "_steps.zip"
 
 onlyfiles = [int(f.lstrip(checkpoint_prefix).rstrip(checkpoint_postfix)) for f in listdir(checkpoint_dir) if isfile(join(checkpoint_dir, f)) and run_name in f]
 onlyfiles.sort(reverse=True)
