@@ -35,7 +35,7 @@ latest_checkpoint = checkpoint_prefix + str(onlyfiles[0]) + checkpoint_postfix
 print(f"Latest checkpoint file is {latest_checkpoint}")
 # Parallel environments
 
-env = make_vec_env(env_name, n_envs=12)
+env = make_vec_env(env_name, n_envs=6)
 
 #callbacks
 checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=checkpoint_dir)
